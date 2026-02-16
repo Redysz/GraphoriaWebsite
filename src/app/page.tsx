@@ -1,65 +1,109 @@
 import Image from "next/image";
+import Link from "next/link";
+import HeroGallery from "@/components/HeroGallery";
+import Features from "@/components/Features";
+import Themes from "@/components/Themes";
+import DownloadSection from "@/components/DownloadSection";
+import { Github, ArrowDown } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      {/* ===== HERO ===== */}
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 py-20">
+        {/* Radial glow behind hero */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 text-center max-w-4xl mx-auto mb-12">
+          <div className="flex justify-center mb-8">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/icons/graphoria-logo.svg"
+              alt="Graphoria"
+              width={320}
+              height={80}
+              priority
+              className="h-16 md:h-20 w-auto"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            Git as a{" "}
+            <span className="gradient-text">Graph</span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+            A powerful, open-source Git GUI that visualizes your entire repository as an interactive directed acyclic graph. Branch, merge, rebase, and predict — all visually.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/download"
+              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-accent-purple/20"
+            >
+              Download for free
+            </Link>
+            <a
+              href="https://github.com/Redysz/Graphoria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-8 py-3.5 rounded-full border border-border hover:border-accent-blue/50 text-foreground font-medium text-lg transition-colors"
+            >
+              <Github size={20} />
+              View on GitHub
+            </a>
+          </div>
         </div>
-      </main>
-    </div>
+
+        {/* Gallery */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto">
+          <HeroGallery />
+        </div>
+
+        {/* Scroll indicator */}
+        <a href="#features" className="mt-8 animate-bounce text-muted hover:text-foreground transition-colors cursor-pointer">
+          <ArrowDown size={24} />
+        </a>
+      </section>
+
+      {/* ===== FEATURES ===== */}
+      <Features />
+
+      {/* ===== THEMES ===== */}
+      <Themes />
+
+      {/* ===== OPEN SOURCE SECTION ===== */}
+      <section className="relative py-32 px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="gradient-text">Built by the community.</span>
+          </h2>
+          <p className="text-lg text-muted max-w-2xl mx-auto mb-10">
+            Graphoria is free and open-source software. Built with Tauri, React, and Rust — designed to be fast, extensible, and cross-platform. Join us and help shape the future of Git tooling.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://github.com/Redysz/Graphoria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:border-accent-blue/50 text-foreground font-medium transition-colors"
+            >
+              <Github size={18} />
+              Contribute on GitHub
+            </a>
+            <a
+              href="https://github.com/Redysz/Graphoria/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-blue hover:underline font-medium"
+            >
+              Report an issue →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== DOWNLOAD ===== */}
+      <DownloadSection />
+    </>
   );
 }
