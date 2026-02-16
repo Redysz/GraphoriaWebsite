@@ -57,7 +57,7 @@ export default function Navbar() {
             <Github size={20} />
           </a>
           <a
-            href="mailto:contact@graphoria.dev"
+            href="mailto:contact@gitgraphoria.com"
             className="p-2 text-muted hover:text-foreground transition-colors rounded-lg hover:bg-surface-light"
             aria-label="Contact"
           >
@@ -105,7 +105,7 @@ export default function Navbar() {
                 <Github size={20} />
               </a>
               <a
-                href="mailto:contact@graphoria.dev"
+                href="mailto:contact@gitgraphoria.com"
                 className="text-muted hover:text-foreground transition-colors"
               >
                 <Mail size={20} />

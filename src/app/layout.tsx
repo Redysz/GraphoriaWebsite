@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gitgraphoria.dev"),
+  metadataBase: new URL("https://gitgraphoria.com"),
   title: "Graphoria — Git as a Graph",
   description: "A powerful Git GUI client that visualizes your entire repository as an interactive directed acyclic graph. Branch, merge, rebase, and predict — all visually.",
   icons: {

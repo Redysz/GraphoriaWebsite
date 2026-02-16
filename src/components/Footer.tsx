@@ -88,10 +88,10 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="mailto:contact@graphoria.dev"
+                  href="mailto:contact@gitgraphoria.com"
                   className="text-sm text-muted hover:text-foreground transition-colors flex items-center gap-2"
                 >
-                  <Mail size={14} /> contact@graphoria.dev
+                  <Mail size={14} /> contact@gitgraphoria.com
                 </a>
               </li>
             </ul>
