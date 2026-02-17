@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 py-20">
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 overflow-x-hidden">
         {/* Radial glow behind hero */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-accent-blue/10 to-accent-purple/10 rounded-full blur-3xl pointer-events-none" />
 
