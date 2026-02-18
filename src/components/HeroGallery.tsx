@@ -8,11 +8,19 @@ interface GalleryItem {
   src: string;
   alt: string;
   youtubeId?: string;
+  videoLink?: string;
+  showVideoBadge?: boolean;
 }
 
 const galleryItems: GalleryItem[] = [
   { type: "image", src: "/screenshots/01.png", alt: "Graphoria - Interactive DAG graph view" },
-  { type: "image", src: "/screenshots/02.png", alt: "Graphoria - Detached HEAD prediction preview" },
+  {
+    type: "image",
+    src: "/screenshots/02.png",
+    alt: "Graphoria - Detached HEAD prediction preview",
+    videoLink: "https://youtu.be/C83DS_6sG18",
+    showVideoBadge: true,
+  },
   { type: "video", src: "/screenshots/03.png", alt: "Graphoria - Commits list view", youtubeId: "dQw4w9WgXcQ" },
   { type: "image", src: "/screenshots/04.png", alt: "Graphoria - Merge conflict resolver" },
   { type: "image", src: "/screenshots/05.png", alt: "Graphoria - Interactive rebase" },
@@ -144,8 +152,17 @@ export default function HeroGallery() {
         {/* Caption */}
         <p className="text-center text-sm text-muted mt-3">
           {item.alt}
-          {item.type === "video" && !isPlaying && (
-            <span className="ml-2 text-accent-blue">▶ Video available</span>
+          {item.showVideoBadge && item.videoLink && (
+            <span className="block mt-1">
+              <a
+                href={item.videoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-blue hover:underline"
+              >
+                ▶ Video available
+              </a>
+            </span>
           )}
         </p>
       </div>
