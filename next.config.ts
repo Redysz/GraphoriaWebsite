@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

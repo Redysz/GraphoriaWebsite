@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Github, Mail } from "lucide-react";
+import { Menu, X, Github, Mail, Coffee } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -47,6 +47,15 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="hidden md:flex items-center gap-2">
+          <a
+            href="https://buymeacoffee.com/graphoria"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-muted hover:text-yellow-400 transition-colors rounded-lg hover:bg-surface-light"
+            aria-label="Buy Me a Coffee"
+          >
+            <Coffee size={20} />
+          </a>
           <a
             href="https://github.com/Redysz/Graphoria"
             target="_blank"
@@ -96,6 +105,14 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="flex items-center gap-4 px-4 pt-3 border-t border-border/50 mt-2">
+              <a
+                href="https://buymeacoffee.com/graphoria"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-yellow-400 transition-colors"
+              >
+                <Coffee size={20} />
+              </a>
               <a
                 href="https://github.com/Redysz/Graphoria"
                 target="_blank"

@@ -1,4 +1,5 @@
 import { Calendar, Tag, Play } from "lucide-react";
+import Image from "next/image";
 
 interface NewsItem {
   date: string;
@@ -6,40 +7,32 @@ interface NewsItem {
   title: string;
   description: string;
   youtubeId?: string;
+  youtubeUrl?: string;
 }
 
 const newsItems: NewsItem[] = [
   {
-    date: "2026-02-15",
-    version: "v0.5.0",
-    title: "Interactive Rebase & Conflict Resolution",
-    description: "This release introduces a full interactive rebase UI with drag-and-drop commit reordering, squash support, and a brand new side-by-side merge conflict resolver with ours/theirs comparison.",
+    date: "2026-02-27",
+    title: "New tutorial: Resolve merge conflicts in git",
+    description:
+      "A new video walkthrough covering two approaches to merge conflict resolution — quick one-click fixes with Take ours / Take theirs and manual line-by-line editing in the Resolve tab.",
+    youtubeId: "x9lA8GJ9ul0",
+    youtubeUrl: "https://youtu.be/x9lA8GJ9ul0",
   },
   {
-    date: "2026-01-28",
-    version: "v0.4.0",
-    title: "Graph Prediction Engine",
-    description: "Preview how your repository graph will look after any operation — before executing it. Our unique prediction engine simulates merges, rebases, and resets to eliminate guesswork.",
-    youtubeId: "dQw4w9WgXcQ",
+    date: "2026-02-18",
+    title: "New tutorial: Fixing a Detached HEAD in git",
+    description:
+      "Our first video tutorial is live! It covers 5 practical ways to recover from a detached HEAD state — whether you want to keep your changes, discard them, or move them to another branch.",
+    youtubeId: "C83DS_6sG18",
+    youtubeUrl: "https://youtu.be/C83DS_6sG18",
   },
   {
-    date: "2026-01-10",
-    version: "v0.3.0",
-    title: "Multi-repo Tabs & Detached HEAD Helper",
-    description: "Open multiple repositories in tabs and switch between them seamlessly. Also added a smart Detached HEAD detection and recovery assistant with visual previews.",
-  },
-  {
-    date: "2025-12-20",
-    version: "v0.2.0",
-    title: "Four Themes & Full Customization",
-    description: "Introducing Light, Dark, Nord, and Solarized themes. Every aspect of the UI is now configurable via JSON configuration files — from button order to background colors.",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    date: "2025-12-01",
-    version: "v0.1.0",
-    title: "Initial Release",
-    description: "The first public release of Graphoria! Features include interactive DAG visualization, basic Git operations (commit, push, pull, fetch), branch management, and dual view mode.",
+    date: "2026-02-14",
+    version: "v0.9.9",
+    title: "Initial pre-release",
+    description:
+      "The first public pre-release of Graphoria is here! This is a test version leading up to v1.0 — it includes the full feature set: interactive DAG visualization, commit graph, branch management, merge/rebase/cherry-pick, conflict resolver, interactive rebase, stash support, diff viewer, keyboard shortcuts, themes, and more. Feel free to download, test, and report any issues.",
   },
 ];
 
@@ -56,45 +49,62 @@ export default function NewsPage() {
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {newsItems.map((item, i) => (
             <article
               key={i}
-              className="rounded-2xl bg-surface/80 border border-border/50 p-6 md:p-8 hover:border-accent-blue/30 transition-all duration-300"
+              className="rounded-2xl bg-surface/80 border border-border/50 p-6 hover:border-accent-blue/30 transition-all duration-300"
             >
-              <div className="flex flex-wrap items-center gap-3 mb-4">
+              <div className="flex flex-wrap items-center gap-3 mb-3">
                 <span className="flex items-center gap-1.5 text-sm text-muted">
                   <Calendar size={14} />
                   {item.date}
                 </span>
                 {item.version && (
-                  <span className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-gradient-to-r from-accent-blue/20 to-accent-purple/20 text-accent-blue text-sm font-medium">
+                  <a
+                    href="https://github.com/Redysz/Graphoria/releases/tag/v0.9.9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-gradient-to-r from-accent-blue/20 to-accent-purple/20 text-accent-blue text-sm font-medium hover:from-accent-blue/30 hover:to-accent-purple/30 transition-colors"
+                  >
                     <Tag size={12} />
                     {item.version}
-                  </span>
+                  </a>
                 )}
                 {item.youtubeId && (
                   <span className="flex items-center gap-1.5 text-sm text-accent-purple">
                     <Play size={14} />
-                    Video available
+                    Video
                   </span>
                 )}
               </div>
 
-              <h2 className="text-xl md:text-2xl font-bold mb-3">{item.title}</h2>
-              <p className="text-muted leading-relaxed">{item.description}</p>
-
-              {item.youtubeId && (
-                <div className="mt-6 aspect-video rounded-xl overflow-hidden border border-border/50">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${item.youtubeId}?rel=0`}
-                    title={item.title}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+              <div className="flex gap-5 items-start">
+                {item.youtubeId && item.youtubeUrl && (
+                  <a
+                    href={item.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 relative w-40 aspect-video rounded-lg overflow-hidden border border-border/50 hover:border-accent-blue/40 transition-colors group"
+                  >
+                    <Image
+                      src={`https://img.youtube.com/vi/${item.youtubeId}/mqdefault.jpg`}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-accent-blue/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Play size={14} className="text-white ml-0.5" fill="white" />
+                      </div>
+                    </div>
+                  </a>
+                )}
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-lg font-bold mb-2">{item.title}</h2>
+                  <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                 </div>
-              )}
+              </div>
             </article>
           ))}
         </div>
